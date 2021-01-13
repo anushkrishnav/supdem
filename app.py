@@ -42,4 +42,19 @@ def about():
 if __name__ == '__main__':
     app.run(debug=True)
 
-    
+
+
+
+"""
+
+Hello Ma'am,
+Vedant here. Hope you are enjoying the Winter!
+Ma'am I had some questions
+1) I am Beta MLSA and the Founder of Devscript. Almost 50% of our team comprises of MLSAs and remaining have applied and are on the way to become. We also have a series where we provide a platform and exposure to the Alpha MLSAs for their Beta Conversion sessions/event and for further events as well. I wanted to know that how Microsoft can support us in our initiative? Something apart from the benefits we get being an MLSA.
+
+2) I am a Beta MLSA from Sept 2019 cohort and have completed 1 yr. During this period, I learnt a lot, have given tons of sessions, organised multiple events and hackathons, worked in many communities, also started one, mentored around 3000 students till date and enjoyed sharing knowledge and helping people. I am looking forward for becoming a Gold MLSA. I don't know what parameters and considered and what further should I need to do to become one. Becoming a Gold MLSA will really motivate me a lot! Will you please guide me on the same?
+
+Thanks and Regards,
+Vedant
+
+"""

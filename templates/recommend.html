@@ -1,0 +1,85 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Monk</title>
+    <link rel="icon" type="image/png" href="static/logo.png"/>
+    <style>
+        #movies {
+            font-family: Verdana, Geneva, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #movies td, #movies th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #movies tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #movies tr:hover {
+            background-color: #ddd;
+        }
+
+        #movies th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #696969;
+            color: white;
+        }
+
+        #column-one {
+            width: 180px;
+        }
+
+        h1 {
+            font-family: Verdana, Geneva, sans-serif;
+            color: tomato;
+        }
+
+        p {
+            font-family: Verdana, Geneva, sans-serif;
+            font-weight: normal;
+            color: black;
+        }
+
+        #notification {
+            font-style: italic;
+            color: tomato;
+        }
+
+        img {
+            width: 100px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+    <h1 align="center" class="pageHeader">
+        Movie Monk
+        </h1>
+        </head>
+<body>
+<p>You are gonna love these Movies!!</p>
+
+
+
+<table id=movies>
+    <col id="column-one">
+    <tr>
+        <th>Supplier Name</th>
+    </tr>
+
+    {% for d in allData %}
+
+    <tr>
+        <td>{{ d['name'] }}</td>
+    </tr>
+      {% endfor %}
+
+</table>
+</body>
+</html>
