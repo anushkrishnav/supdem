@@ -1,36 +1,35 @@
-from datetime import datetime
-from flask import Flask, render_template, url_for, flash, redirect
+from flask import Flask, render_template, url_for, flash, redirect, request
 from flask_sqlalchemy import SQLAlchemy
-from forms import RegistrationForm, LoginForm
 from flask_migrate import Migrate
 from config import Config
+
 
 app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db=db)
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    name = db.Column(db.String(60), nullable=False)
-    service = db.Column(db.String(60), nullable=False)
-    
-    def __repr__(self):
-        return f"User('{self.password}')"
 
-class Supplier(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    name = db.Column(db.String(60), nullable=False)
-    service  = db.Column(db.String(60), nullable=False)
-
-    def __repr__(self):
-        return f"User('{self.password}')"
-
-@app.route("/")
-@app.route("/home")
+from model import Supplier, User
+from forms import UserForm, SupplierForm
+@app.route("/register", methods=['GET', 'POST'])
 def home():
-    return render_template('index.html')
+    #SupplierForm
+    Sf = SupplierForm()
+    if request.method == "POST":
+            sfor = Supplier(email=Sf.email.data, name=Sf.name.data, service=Sf.service.data)
+            db.session.add(sfor)
+            db.session.commit()
+            flash('Congratulations, you are now a registered Supplier!')
+            return redirect(url_for('data'))
+    return render_template('index.html',form=Sf)
+
+@app.route("/data",methods = ['GET','POST'])
+def data():
+    if request.method == 'GET':
+        Supp = Supplier.query.all()
+        print(Supp)
+
+        return render_template('data.html',Supp=Supp)
 
 
 @app.route("/about")

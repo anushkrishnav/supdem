@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo,  ValidationError
-from .app import User
+from model import Supplier, User
 
 class UserForm(FlaskForm):
     id = StringField('id',validators=[DataRequired(), Length(min=2, max=20)])
@@ -10,10 +10,10 @@ class UserForm(FlaskForm):
     service = StringField('Service',validators=[DataRequired()])
     submit = SubmitField('Submit')
 
-    def validate_username(self, username):
-        user = User.query.filter_by(username=username.data).first()
+    def validate_username(self, name):
+        user = User.query.filter_by(name=name.data).first()
         if user is not None:
-            raise ValidationError('Please use a different username.')
+            raise ValidationError('Please use a different name.')
 
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
@@ -28,12 +28,12 @@ class SupplierForm(FlaskForm):
     service = StringField('Service',validators=[DataRequired()])
     submit = SubmitField('Submit')
 
-    def validate_username(self, username):
-        user = User.query.filter_by(username=username.data).first()
+    def validate_username(self, name):
+        user = Supplier.query.filter_by(name=name.data).first()
         if user is not None:
-            raise ValidationError('Please use a different username.')
+            raise ValidationError('Please use a different name.')
 
     def validate_email(self, email):
-        user = User.query.filter_by(email=email.data).first()
+        user = Supplier.query.filter_by(email=email.data).first()
         if user is not None:
             raise ValidationError('Please use a different email address.')
