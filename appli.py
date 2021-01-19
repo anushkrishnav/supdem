@@ -11,24 +11,25 @@ migrate = Migrate(app, db=db)
 
 from model import Supplier, User
 from forms import UserForm, SupplierForm
-@app.route("/register", methods=['GET', 'POST'])
+
+@app.route("/", methods=['GET', 'POST'])
 def home():
     #SupplierForm
     Sf = SupplierForm()
+    Rf = UserForm()
     if request.method == "POST":
             sfor = Supplier(email=Sf.email.data, name=Sf.name.data, service=Sf.service.data)
             db.session.add(sfor)
             db.session.commit()
             flash('Congratulations, you are now a registered Supplier!')
             return redirect(url_for('data'))
+    
     return render_template('index.html',form=Sf)
 
 @app.route("/data",methods = ['GET','POST'])
 def data():
     if request.method == 'GET':
         Supp = Supplier.query.all()
-        print(Supp)
-
         return render_template('data.html',Supp=Supp)
 
 
