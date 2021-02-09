@@ -12,32 +12,41 @@ migrate = Migrate(app, db=db)
 from model import Supplier, User
 from forms import UserForm, SupplierForm
 @app.route("/home", methods=['GET', 'POST'])
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/", methods=['GET', 'POST'])    #User Form
 def home():
-    #User Form
-    # Rf = UserForm()
-    # sFor = request.form['contact']
-    # print(sFor)
+    Rf = UserForm()
     if request.method == "POST":
-            # sFor = request.form['contact']#User(email=Rf.email.data, name=Rf.name.data, service=Rf.service.data)
-
+            sFor = User(email=Rf.email.data, name=Rf.name.data, service=Rf.service.data)
+            db.session.add(sFor)
+            db.session.commit()
+            # sFor = request.form['contact']
             return redirect(url_for('recommendation',sFor=sFor))
-    
     return render_template('home.html')#,form=Rf)
 
-@app.route("/supplier", methods=['GET', 'POST'])
+@app.route("/supplier", methods=['GET', 'POST'])    #Supplier Form
 def supplier():
-    #Supplier Form
     Sf = SupplierForm()
-    Rf = UserForm()
+   
     if request.method == "POST":
             sfor = Supplier(email=Sf.email.data, name=Sf.name.data, service=Sf.service.data)
             db.session.add(sfor)
             db.session.commit()
             flash('Congratulations, you are now a registered Supplier!')
             return redirect(url_for('home'))
-
     return render_template('supplier.html',form=Sf)
+
+@app.route("/recommendation",methods = ['GET','POST'])
+def recommendation():
+    if request.method == 'GET':
+        Supp = Supplier.query.all()
+        # sFor=request.args.get('sFor')
+        temp = User.query.all()
+        print("temp",temp)
+        return render_template('recommend.html',Supp=Supp)
+
+@app.route("/about")
+def about():
+    return render_template('about.html', title='About')
 
 @app.route("/data",methods = ['GET','POST'])
 def data():
@@ -46,19 +55,6 @@ def data():
         print("data",Supp)
         
         return render_template('data.html',Supp=Supp)
-
-@app.route("/recommendation",methods = ['GET','POST'])
-def recommendation():
-    if request.method == 'GET':
-        Supp = Supplier.query.all()
-        sFor=request.args.get('sFor')
-        print("recomme",sFor)
-        return render_template('recommend.html',Supp=Supp)
-
-@app.route("/about")
-def about():
-    return render_template('about.html', title='About')
-
 
 if __name__ == '__main__':
     app.run(debug=True)
