@@ -7,7 +7,7 @@ flask db upgrade
 
 ### Note:  Everytime a new column is added or removed from model.py and forms.py run
 
-$ flask db migrate -m " {{insert your message here}}"
-$ flask db upgrade
+flask db migrate -m " {{insert your message here}}"
+flask db upgrade
 
 after that flask run 

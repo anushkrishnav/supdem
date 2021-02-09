@@ -16,17 +16,17 @@ from forms import UserForm, SupplierForm
 def home():
     Rf = UserForm()
     if request.method == "POST":
-            sFor = User(email=Rf.email.data, name=Rf.name.data, service=Rf.service.data)
+            sFor = User( service=Rf.service.data)
             db.session.add(sFor)
             db.session.commit()
             # sFor = request.form['contact']
+            print("sFor",sFor)
             return redirect(url_for('recommendation',sFor=sFor))
     return render_template('home.html')#,form=Rf)
 
 @app.route("/supplier", methods=['GET', 'POST'])    #Supplier Form
 def supplier():
     Sf = SupplierForm()
-   
     if request.method == "POST":
             sfor = Supplier(email=Sf.email.data, name=Sf.name.data, service=Sf.service.data)
             db.session.add(sfor)
@@ -40,8 +40,11 @@ def recommendation():
     if request.method == 'GET':
         Supp = Supplier.query.all()
         # sFor=request.args.get('sFor')
+
         temp = User.query.all()
-        print("temp",temp)
+        # print(temp.service)
+       
+        # print("temp",temp)
         return render_template('recommend.html',Supp=Supp)
 
 @app.route("/about")
