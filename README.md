@@ -4,6 +4,7 @@
 flask db init
 flask db migrate -m " initial migration"
 flask db upgrade
+flask run
 
 ### Note:  Everytime a new column is added or removed from model.py and forms.py run
 

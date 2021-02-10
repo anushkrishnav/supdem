@@ -9,6 +9,10 @@ class User(db.Model):
     def __repr__(self):
         return (f"User('{self.service}')")
 
+    def data(self):
+        l = [self.name, self.service, self.email]
+        return l
+
 class Supplier(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
@@ -17,3 +21,7 @@ class Supplier(db.Model):
 
     def __repr__(self):
         return f"Supplier('{self.name}')"
+
+    def data(self):
+        l = [self.name, self.service, self.email]
+        return l

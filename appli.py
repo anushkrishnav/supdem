@@ -16,13 +16,14 @@ from forms import UserForm, SupplierForm
 def home():
     Rf = UserForm()
     if request.method == "POST":
-            sFor = User( service=Rf.service.data)
+            sFor = User( service=Rf.service.data,email=Rf.email.data,name=Rf.name.data)
             db.session.add(sFor)
             db.session.commit()
             # sFor = request.form['contact']
-            print("sFor",sFor)
-            return redirect(url_for('recommendation',sFor=sFor))
-    return render_template('home.html')#,form=Rf)
+            flash('Congratulations, you are now a registered User!')
+            # print("sFor",sFor)
+            return redirect(url_for('recommendation'))
+    return render_template('home.html',form=Rf)
 
 @app.route("/supplier", methods=['GET', 'POST'])    #Supplier Form
 def supplier():
@@ -38,14 +39,17 @@ def supplier():
 @app.route("/recommendation",methods = ['GET','POST'])
 def recommendation():
     if request.method == 'GET':
-        Supp = Supplier.query.all()
-        # sFor=request.args.get('sFor')
-
-        temp = User.query.all()
-        # print(temp.service)
-       
-        # print("temp",temp)
-        return render_template('recommend.html',Supp=Supp)
+        allSuppliers = Supplier.query.all()
+        # sFor=request.args.get('sFor') 
+        
+        allUsers = User.query.all()
+        print("Supp",allSuppliers[-1].data())
+        Suppliers = []
+        for i in allSuppliers:
+            if i.data()[1]==allUsers[-1].data()[1]:
+                Suppliers.append(i)
+        print("last user",allUsers[-1].data())
+        return render_template('recommend.html',Supp=Suppliers)
 
 @app.route("/about")
 def about():
@@ -56,8 +60,8 @@ def data():
     if request.method == 'GET':
         Supp = Supplier.query.all()
         print("data",Supp)
-        
-        return render_template('data.html',Supp=Supp)
+        Users = User.query.all()
+        return render_template('data.html',Supp=[Supp,Users])
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -65,18 +65,17 @@
 <body>
 <p>Hope this helps!!</p>
 
-
-
 <table id=movies>
     <col id="column-one">
+    <col id="column-two">
     <tr>
-        <th>Supplier Name</th>
+        <th>Name</th>
+        <th>Email</th>
     </tr>
-
     {% for d in Supp %}
-
     <tr>
         <td>{{ d['name'] }}</td>
+        <td>{{ d['email'] }}</td>
     </tr>
       {% endfor %}
 

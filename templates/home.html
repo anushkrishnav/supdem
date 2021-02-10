@@ -8,14 +8,50 @@
 	<form action="{{ url_for('home') }}" method="post" id="contact">
 		<h3>if you need some service</h3>
 		<h4>Explain your query details here.</h4>
-		<fieldset>
-			<input placeholder="search" type="text" tabindex="1" name = "contact" required autofocus>
-		</fieldset>
-		<fieldset>
-			<button name="submit" type="submit">Submit</button>
-		</fieldset>
+        {{form.hidden_tag()}}
+        <fieldset>
+            <label for="name">Full name</label>
+            {{ form.name(size=32) }}<br>
+            {% for error in form.name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </fieldset>
+        <fieldset>
+            <label for="email">Email Address</label>
+            {{ form.email(size=64) }}<br>
+            {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </fieldset>
+        <fieldset>
+            <label for="Service">Service</label>
+            {{ form.service(size=32) }}<br>
+            {% for error in form.service.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </fieldset>
+        <fieldset>
+            <button name="submit" type="submit">Submit</button>
+        </fieldset>
 	</form>
 </div>
+
+<div>
+    <row>
+    <col>
+    <div style="color: aliceblue;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size: 20px; align-self: center;">
+
+        Interested in providing some service?
+    </div>
+    <col>
+    <col>
+    <p><a href="{{ url_for('supplier') }}">Click here!</a></p>
+
+
+</col>    
+</row>
+</div>
+
 
 </div>
 {% endblock %}
