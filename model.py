@@ -7,7 +7,7 @@ class User(db.Model):
     service = db.Column(db.String(60))
     
     def __repr__(self):
-        return (f"User('{self.service}')")
+        return (f"User('{self.name}')")
 
     def data(self):
         l = [self.name, self.service, self.email]

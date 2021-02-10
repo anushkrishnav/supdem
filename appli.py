@@ -12,7 +12,7 @@ migrate = Migrate(app, db=db)
 from model import Supplier, User
 from forms import UserForm, SupplierForm
 @app.route("/home", methods=['GET', 'POST'])
-@app.route("/", methods=['GET', 'POST'])    #User Form
+@app.route("/", methods=['GET', 'POST'])    # User Form
 def home():
     Rf = UserForm()
     if request.method == "POST":
@@ -41,7 +41,7 @@ def recommendation():
     if request.method == 'GET':
         allSuppliers = Supplier.query.all()
         # sFor=request.args.get('sFor') 
-        
+
         allUsers = User.query.all()
         print("Supp",allSuppliers[-1].data())
         Suppliers = []
@@ -65,3 +65,9 @@ def data():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+"""
+1) what if no supplier- dont worry we will get back to you. Drop a mail jamae@govt.com
+2) Recommended Suppliers for XYZ Job
+3) Enlist some services like in zelus
+"""

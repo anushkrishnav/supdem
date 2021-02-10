@@ -1,8 +1,9 @@
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Recommended Suppliers</title>
-    <link rel="icon" type="image/png" href="static/logo.png"/>
+    <link rel="icon" type="image/png" href="static/logo.png" />
     <style>
         #movies {
             font-family: Verdana, Geneva, sans-serif;
@@ -10,7 +11,8 @@
             width: 100%;
         }
 
-        #movies td, #movies th {
+        #movies td,
+        #movies th {
             border: 1px solid #ddd;
             padding: 8px;
         }
@@ -60,25 +62,27 @@
     </style>
     <h1 align="center" class="pageHeader">
         Recommended Suppliers
-        </h1>
-        </head>
+    </h1>
+</head>
+
 <body>
-<p>Hope this helps!!</p>
+    <p>Hope this helps!!</p>
 
-<table id=movies>
-    <col id="column-one">
-    <col id="column-two">
-    <tr>
-        <th>Name</th>
-        <th>Email</th>
-    </tr>
-    {% for d in Supp %}
-    <tr>
-        <td>{{ d['name'] }}</td>
-        <td>{{ d['email'] }}</td>
-    </tr>
-      {% endfor %}
+    <table id=movies>
+        <col id="column-one">
+        <col id="column-two">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+        {% for d in Supp %}
+        <tr>
+            <td>{{ d['name'] }}</td>
+            <td>{{ d['email'] }}</td>
+        </tr>
+        {% endfor %}
 
-</table>
+    </table>
 </body>
+
 </html>

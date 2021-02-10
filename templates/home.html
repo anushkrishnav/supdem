@@ -1,16 +1,16 @@
 {% extends "Layouts/layout.html" %}
 {% block content %}
-<div class="headingTop"> Glad to see you can help!</div>
+<div class="headingTop">Welcome to trebal!!</div>
 <br>
-<div class="headingTop"> Fill the form</div>
+<div class="headingTop">Are you in need of some help? Please fill up the form below!</div>
 
 <div class="container">
-	<form action="{{ url_for('home') }}" method="post" id="contact">
-		<h3>if you need some service</h3>
-		<h4>Explain your query details here.</h4>
+    <form action="{{ url_for('home') }}" method="post" id="contact">
+        <!-- <h3>If you need some service</h3> -->
+        <h4>Explain your query details here.</h4>
         {{form.hidden_tag()}}
         <fieldset>
-            <label for="name">Full name</label>
+            <label for="name">Name</label>
             {{ form.name(size=32) }}<br>
             {% for error in form.name.errors %}
             <span style="color: red;">[{{ error }}]</span>
@@ -33,23 +33,18 @@
         <fieldset>
             <button name="submit" type="submit">Submit</button>
         </fieldset>
-	</form>
+    </form>
 </div>
 
 <div>
-    <row>
-    <col>
-    <div style="color: aliceblue;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size: 20px; align-self: center;">
-
-        Interested in providing some service?
-    </div>
-    <col>
-    <col>
-    <p><a href="{{ url_for('supplier') }}">Click here!</a></p>
+    <form id="contact">
+        <button name="submit" type="submit">
+            <a href="{{ url_for('supplier') }}" style="color: wheat; font-weight: bold;"> Click if you can provide some
+                service!</a>
+        </button>
+    </form>
 
 
-</col>    
-</row>
 </div>
 
 
