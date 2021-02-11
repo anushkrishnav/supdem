@@ -1,13 +1,27 @@
 {% extends "Layouts/layout.html" %}
 {% block content %}
-<div class="headingTop">Welcome to trebal!!</div>
+<h1 class="headingTop" style="font-size: 100px;padding-top: 32px;">Welcome to trebal!!</h1>
+</br>
+<div class="headingTop"> A platform for managing needs!</div>
 <br>
-<div class="headingTop">Are you in need of some help? Please fill up the form below!</div>
+<div class="headingTop">If you are in need of a good or service,</div>
+
+
+<div class="dropdown1">
+    <button class="dropbtn1">Services Offered</button>
+    <div class="dropdown-content1">
+        <a href="#">Gardening</a>
+        <a href="#">Monetary</a>
+        <a href="#">Tutoring</a>
+        <a href="#">Coding</a>
+        <a href="#">Art</a>
+    </div>
+</div>
 
 <div class="container">
     <form action="{{ url_for('home') }}" method="post" id="contact">
         <!-- <h3>If you need some service</h3> -->
-        <h4>Explain your query details here.</h4>
+        <!-- <h4>Explain your query details here.</h4> -->
         {{form.hidden_tag()}}
         <fieldset>
             <label for="name">Name</label>
@@ -39,8 +53,8 @@
 <div>
     <form id="contact">
         <button name="submit" type="submit">
-            <a href="{{ url_for('supplier') }}" style="color: wheat; font-weight: bold;"> Click if you can provide some
-                service!</a>
+            <a href="{{ url_for('supplier') }}" style="color: wheat; font-weight: bold;"> Click here if you can provide
+                a good or service!</a>
         </button>
     </form>
 

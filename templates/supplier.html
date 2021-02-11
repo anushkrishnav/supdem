@@ -1,16 +1,16 @@
 {% extends "Layouts/layout.html" %}
 {% block content %}
-<div class="headingTop"> You got problems? We got solutions!!</div>
+ <h1 class="headingTop" style="font-size: 100px;padding-top: 32px;">Trebal</h1>
 <br>
-<div class="headingTop"> Fill the form</div>
+<div class="headingTop"> A platform for managing needs!</div>
 
 <div class="container">
     <form id="contact" action="{{ url_for('supplier') }}" method="post">
-        <h3>if you can provide service!</h3>
-        <h4>Enter your service details here.</h4>
+        <h3>If you can provide service,</h3>
+        <h4>Please fill out the form below:</h4>
         {{form.hidden_tag()}}
         <fieldset>
-            <label for="name">Full name</label>
+            <label for="name">Name</label>
             {{ form.name(size=32) }}<br>
             {% for error in form.name.errors %}
             <span style="color: red;">[{{ error }}]</span>

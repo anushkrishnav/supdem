@@ -43,17 +43,27 @@ def recommendation():
         # sFor=request.args.get('sFor') 
 
         allUsers = User.query.all()
-        print("Supp",allSuppliers[-1].data())
-        Suppliers = []
+        # print("Supp",allSuppliers[-1].data())
+        Suppliers = [allUsers[-1].data()[1]]
+        
         for i in allSuppliers:
             if i.data()[1]==allUsers[-1].data()[1]:
                 Suppliers.append(i)
-        print("last user",allUsers[-1].data())
+        # print("last user",allUsers[-1].data())
+        if not len(Suppliers)>1:
+            return redirect(url_for('noservice'))
+           
         return render_template('recommend.html',Supp=Suppliers)
 
-@app.route("/about")
+@app.route("/about",methods=['GET','POST'])
 def about():
-    return render_template('about.html', title='About')
+    if request.method=='GET':
+        return render_template('about.html')
+
+@app.route("/noservice",methods=['GET','POST'])
+def noservice():
+    if request.method=='GET':
+        return render_template('noservice.html')
 
 @app.route("/data",methods = ['GET','POST'])
 def data():
@@ -67,7 +77,5 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 """
-1) what if no supplier- dont worry we will get back to you. Drop a mail jamae@govt.com
-2) Recommended Suppliers for XYZ Job
 3) Enlist some services like in zelus
 """

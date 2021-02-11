@@ -61,12 +61,12 @@
         }
     </style>
     <h1 align="center" class="pageHeader">
-        Recommended Suppliers
+        Recommended Suppliers for {{ Supp[0] }}
     </h1>
 </head>
 
 <body>
-    <p>Hope this helps!!</p>
+    <p>Please find below matches based on the information you provided!!</p>
 
     <table id=movies>
         <col id="column-one">
@@ -74,11 +74,13 @@
         <tr>
             <th>Name</th>
             <th>Email</th>
+            <th>Address</th>
         </tr>
-        {% for d in Supp %}
+        {% for d in Supp[1:] %}
         <tr>
             <td>{{ d['name'] }}</td>
             <td>{{ d['email'] }}</td>
+            <td>{{ d['address'] }}</td>
         </tr>
         {% endfor %}
 
