@@ -192,123 +192,93 @@
 
         .headingTop {
             font-size: x-large;
-            padding-top: 10px;
+            padding-top: 20px;
             text-align: center;
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             color: white;
         }
-
-        .dropbtn1 {
-            background-color: #377038;
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: 1px;
-        }
-
-        /* The container <div> - needed to position the dropdown content */
-        .dropdown1 {
-            position: relative;
-            display: inline-block;
-        }
-
-        /* Dropdown Content (Hidden by Default) */
-        .dropdown-content1 {
-            display: none;
-            position: absolute;
-            background-color: #f1f1f1;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        /* Links inside the dropdown */
-        .dropdown-content1 a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        /* Change color of dropdown links on hover */
-        .dropdown-content1 a:hover {
-            background-color: #ddd;
-        }
-
-        /* Show the dropdown menu on hover */
-        .dropdown1:hover .dropdown-content1 {
-            display: block;
-        }
-
-        /* Change the background color of the dropdown button when the dropdown content is shown */
-        .dropdown1:hover .dropbtn {
-            background-color: #3e8e41;
-        }
     </style>
 </head>
 
-<body >
-    <div>
-        <h1 class="headingTop" style="font-size: 100px;padding-top: 32px;">Welcome to trebal!!</h1>
-    </br>
-    <div class="headingTop"> A platform for managing needs!</div>
+<body>
+    <div class="headingTop"> You got problems? We got solutions!!</div>
     <br>
-    <div class="headingTop">If you are in need of a good or service,</div>
-<!--<div class="dropdown1">
-        <button class="dropbtn1">Services Offered</button>
-        <div class="dropdown-content1">
-            <a href="#">Gardening</a>
-            <a href="#">Monetary</a>
-            <a href="#">Tutoring</a>
-            <a href="#">Coding</a>
-            <a href="#">Art</a>
-        </div>
-    </div> -->
-    <div class="container">
-        <form action="{{ url_for('home') }}" method="post" id="contact">
-            <!-- <h3>If you need some service</h3> -->
-            <!-- <h4>Explain your query details here.</h4> -->
-            {{form.hidden_tag()}}
-            <fieldset>
-                <label for="name">Name</label>
-                {{ form.name(size=32) }}<br>
-                {% for error in form.name.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </fieldset>
-            <fieldset>
-                <label for="email">Email Address</label>
-                {{ form.email(size=64) }}<br>
-                {% for error in form.email.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </fieldset>
-      
-            <fieldset>
-                    <span >Services Offered</span>
-                        <select name="comp_select" class="dropDown">
-                          <option value="Gardening">Gardening </option>
-                          <option value="Monetary">Monetary </option>   
-                          <option value="Tutoring">Tutoring </option>
-                          <option value="Coding">Coding </option>
-                          <option value="Art">Art </option>
+    <div class="headingTop"> Fill the form</div>
+
+    <div class="row">
+        <div class="column">
+            <div class="container">
+                <form id="contact" action="" method="post">
+                    <h3>if you need some service</h3>
+                    <h4>Explain your query details here.</h4>
+                    <fieldset>
+                        <input placeholder="Name [First and Last]" type="text" tabindex="1" required autofocus>
+                    </fieldset>
+                    <fieldset>
+                        <input placeholder="Address" type="text" tabindex="1" required autofocus>
+                    </fieldset>
+                    <fieldset>
+                        <input placeholder="Council District(by state)" type="text" tabindex="1" required autofocus>
+                    </fieldset>
+                    <fieldset>
+                        <input placeholder="Age" type="text" tabindex="1" required autofocus>
+                    </fieldset>
+                    <fieldset>
+                        <input placeholder="Sex [Male or Female]+preferred pronouns" type="email" tabindex="2" required>
+                    </fieldset>
+                    <fieldset>
+                        <input placeholder="Type of Request" type="tel" tabindex="3" required>
+                    </fieldset>
+                    <fieldset>
+                        <select name="Services" id="services" class="dropDown">
+                            <option value="volvo">Gardening</option>
+                            <option value="saab">Monetory</option>
+                            <option value="opel">Opel</option>
+                            <option value="audi">Audi</option>
                         </select>
-             
-            </fieldset>
-            <fieldset>
-                <button name="submit" type="submit">Submit</button>
-            </fieldset>
-          
-        </form>
-    </div>
-    
-    <div>
-        <form id="contact">
-            <button name="submit" type="submit">
-                <a href="{{ url_for('supplier') }}" style="color: wheat; font-weight: bold;"> Click here if you can provide a good or service!</a>
-            </button>
-        </form>
-    </div>
+                    </fieldset>
+                    <fieldset>
+                        <input placeholder="Council district" type="url" tabindex="4" required>
+                    </fieldset>
+                    <fieldset>
+                        <input placeholder="Email Address" type="url" tabindex="4" required>
+                    </fieldset>
+                    <fieldset>
+                        <input placeholder="Phone Number" type="url" tabindex="4" required>
+                    </fieldset>
+
+                    <fieldset>
+                        <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div class=column>
+            <div class="container">
+                <form id="contact" action="" method="post">
+                    <h3>if you can provide service!</h3>
+                    <h4>Enter your service details here.</h4>
+                    <fieldset>
+                        <input placeholder="Your name" type="text" tabindex="1" required autofocus>
+                    </fieldset>
+                    <fieldset>
+                        <input placeholder="Your Email Address" type="email" tabindex="2" required>
+                    </fieldset>
+                    <fieldset>
+                        <input placeholder="Your Phone Number (optional)" type="tel" tabindex="3" required>
+                    </fieldset>
+                    <fieldset>
+                        <input placeholder="Your Web Site (optional)" type="url" tabindex="4" required>
+                    </fieldset>
+                    <fieldset>
+                        <textarea placeholder="Type your message here...." tabindex="5" required></textarea>
+                    </fieldset>
+                    <fieldset>
+                        <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
     </div>
 </body>
 </html>

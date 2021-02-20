@@ -6,6 +6,7 @@ class User(db.Model):
     address = db.Column(db.String(500))
     service = db.Column(db.String(60))
     
+    
     def __repr__(self):
         return (f"User('{self.name}')")
 

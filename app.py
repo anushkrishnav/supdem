@@ -14,26 +14,34 @@ from forms import UserForm, SupplierForm
 @app.route("/home", methods=['GET', 'POST'])
 @app.route("/", methods=['GET', 'POST'])    # User Form
 def home():
+    print("home")
     Rf = UserForm()
     if request.method == "POST":
-            sFor = User( service=Rf.service.data,email=Rf.email.data,name=Rf.name.data)
-            db.session.add(sFor)
-            db.session.commit()
-            # sFor = request.form['contact']
-            flash('Congratulations, you are now a registered User!')
-            # print("sFor",sFor)
-            return redirect(url_for('recommendation'))
+        select = request.form.get('comp_select')
+        sFor = User( service=select,email=Rf.email.data,name=Rf.name.data)
+        
+        db.session.add(sFor)
+        db.session.commit()
+
+        flash('Congratulations, you are now a registered User!')
+        # print("sFor",sFor)
+        return redirect(url_for('recommendation'))
     return render_template('home.html',form=Rf)
 
 @app.route("/supplier", methods=['GET', 'POST'])    #Supplier Form
 def supplier():
+    print("supplier")
     Sf = SupplierForm()
     if request.method == "POST":
-            sfor = Supplier(email=Sf.email.data, name=Sf.name.data, service=Sf.service.data)
-            db.session.add(sfor)
-            db.session.commit()
-            flash('Congratulations, you are now a registered Supplier!')
-            return redirect(url_for('home'))
+        select = request.form.get('comp_select')
+
+        sfor = Supplier(email=Sf.email.data, name=Sf.name.data, service=select)
+        
+        db.session.add(sfor)
+        db.session.commit()
+        
+        flash('Congratulations, you are now a registered Supplier!')
+        return redirect(url_for('home'))
     return render_template('supplier.html',form=Sf)
 
 @app.route("/recommendation",methods = ['GET','POST'])
@@ -45,7 +53,7 @@ def recommendation():
         allUsers = User.query.all()
         # print("Supp",allSuppliers[-1].data())
         Suppliers = [allUsers[-1].data()[1]]
-        
+     
         for i in allSuppliers:
             if i.data()[1]==allUsers[-1].data()[1]:
                 Suppliers.append(i)
@@ -74,8 +82,4 @@ def data():
         return render_template('data.html',Supp=[Supp,Users])
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
-"""
-3) Enlist some services like in zelus
-"""
+    app.run(debug=True)    

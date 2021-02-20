@@ -23,18 +23,28 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </fieldset>
-        <fieldset>
+        <!-- <fieldset>
             <label for="Service">Service</label>
             {{ form.service(size=32) }}<br>
             {% for error in form.service.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-        </fieldset>
+        </fieldset> -->
+        <fieldset>
+            <span >Services Offered</span>
+                <select name="comp_select" class="dropDown">
+                  <option value="Gardening">Gardening </option>
+                  <option value="Monetary">Monetary </option>   
+                  <option value="Tutoring">Tutoring </option>
+                  <option value="Coding">Coding </option>
+                  <option value="Art">Art </option>
+                </select>
+     
+    </fieldset>
+   
         <fieldset>
             <button name="submit" type="submit">Submit</button>
         </fieldset>
     </form>
-  
-
 </div>
 {% endblock %}
