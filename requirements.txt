@@ -10,3 +10,4 @@ gunicorn
 psycopg2
 flask_wtf
 email-validator
+python-dotenv

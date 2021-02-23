@@ -89,11 +89,4 @@ def data():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-# 1) order shr 
-# 2) david
-# aakash
-# persistent]
-# RCOEM
     
