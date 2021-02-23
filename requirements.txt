@@ -8,3 +8,5 @@ flask_sqlalchemy
 flask_migrate
 gunicorn
 psycopg2
+flask_wtf
+email-validator
