@@ -10,9 +10,16 @@
         <h4>Please fill out the form below:</h4>
         {{form.hidden_tag()}}
         <fieldset>
-            <label for="name">Name</label>
-            {{ form.name(size=32) }}<br>
-            {% for error in form.name.errors %}
+            <label for="name">First Name</label>
+            {{ form.firstName(size=32) }}<br>
+            {% for error in form.firstName.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </fieldset>
+        <fieldset>
+            <label for="name">Last Name</label>
+            {{ form.lastName(size=32) }}<br>
+            {% for error in form.lastName.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </fieldset>
@@ -31,17 +38,46 @@
             {% endfor %}
         </fieldset> -->
         <fieldset>
+            <label for="phoneNumber">Phone Number</label>
+            {{ form.phoneNumber(size=32) }}<br>
+            {% for error in form.phoneNumber.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </fieldset>
+        <fieldset>
+            <label for="address">Address</label>
+            {{ form.address(size=32) }}<br>
+            {% for error in form.address.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </fieldset>
+        <fieldset>
+            <span >City</span>
+                <select name="city" class="dropDown">
+                  <option value="Nagpur">Nagpur </option>
+                  <option value="Pune">Pune </option>   
+                  <option value="Mumbai">Mumbai </option>
+                  <option value="Aurangabad">Aurangabad </option>
+                  <option value="Nashik">Nashik </option>
+                </select>
+        </fieldset>
+        <fieldset>
             <span >Services Offered</span>
-                <select name="comp_select" class="dropDown">
+                <select name="service" class="dropDown">
                   <option value="Gardening">Gardening </option>
                   <option value="Monetary">Monetary </option>   
                   <option value="Tutoring">Tutoring </option>
                   <option value="Coding">Coding </option>
                   <option value="Art">Art </option>
                 </select>
-     
     </fieldset>
-   
+    <fieldset>
+        <label for="note">Description</label>
+        {{ form.note(size=32) }}<br>
+        {% for error in form.note.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </fieldset>
         <fieldset>
             <button name="submit" type="submit">Submit</button>
         </fieldset>

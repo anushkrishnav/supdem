@@ -5,9 +5,14 @@ from model import Supplier, User
 
 class UserForm(FlaskForm):
     id = StringField('id',validators=[DataRequired(), Length(min=2, max=20)])
-    email = StringField('Email',validators=[DataRequired()])
-    name = StringField('Name',validators=[DataRequired()])
+    email = StringField('Email',validators=[DataRequired(),Email()])
+    firstName = StringField('firstName',validators=[DataRequired()])
+    lastName = StringField('lastName',validators=[DataRequired()])
+    address = StringField('address',validators=[DataRequired()])
+    city = StringField('city',validators=[DataRequired()])
+    phoneNumber = StringField('phoneNumber',validators=[DataRequired()])
     service = StringField('Service',validators=[DataRequired()])
+    note = StringField('Service',validators=[DataRequired()])
     submit = SubmitField('Submit')
 
     def validate_username(self, name):
@@ -23,9 +28,14 @@ class UserForm(FlaskForm):
 
 class SupplierForm(FlaskForm):
     id = StringField('id',validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    name = StringField('Name',validators=[DataRequired()])
+    email = StringField('Email',validators=[DataRequired(),Email()])
+    firstName = StringField('firstName',validators=[DataRequired()])
+    lastName = StringField('lastName',validators=[DataRequired()])
+    address = StringField('address',validators=[DataRequired()])
+    phoneNumber = StringField('phoneNumber',validators=[DataRequired()])
     service = StringField('Service',validators=[DataRequired()])
+    note = StringField('Service',validators=[DataRequired()])
+
     submit = SubmitField('Submit')
 
     def validate_username(self, name):

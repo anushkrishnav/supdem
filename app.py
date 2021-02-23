@@ -17,8 +17,10 @@ def home():
     print("home")
     Rf = UserForm()
     if request.method == "POST":
-        select = request.form.get('comp_select')
-        sFor = User( service=select,email=Rf.email.data,name=Rf.name.data)
+        service = request.form.get('service')
+        city = request.form.get('city')
+        print("city",city)
+        sFor = User( service=service,email=Rf.email.data,firstName=Rf.firstName.data,lastName=Rf.lastName.data,address=Rf.address.data,phoneNumber=Rf.phoneNumber.data,city=city,note=Rf.note.data)
         
         db.session.add(sFor)
         db.session.commit()
@@ -33,9 +35,10 @@ def supplier():
     print("supplier")
     Sf = SupplierForm()
     if request.method == "POST":
-        select = request.form.get('comp_select')
+        service = request.form.get('service')
+        city = request.form.get('city')
 
-        sfor = Supplier(email=Sf.email.data, name=Sf.name.data, service=select)
+        sfor = Supplier(service=service,email=Sf.email.data,firstName=Sf.firstName.data,lastName=Sf.lastName.data,address=Sf.address.data,phoneNumber=Sf.phoneNumber.data,city=city,note=Sf.note.data)
         
         db.session.add(sfor)
         db.session.commit()
@@ -53,11 +56,14 @@ def recommendation():
         allUsers = User.query.all()
         # print("Supp",allSuppliers[-1].data())
         Suppliers = [allUsers[-1].data()[1]]
-     
+        # print("all suppliers",allSuppliers)
+        # print("allUsers",allUsers)
         for i in allSuppliers:
-            if i.data()[1]==allUsers[-1].data()[1]:
+            # print("test",i.data()[-1],allUsers[-1].data()[-1])
+            if i.data()[-1]==allUsers[-1].data()[-1] and i.data()[-3]==allUsers[-1].data()[-3] :
                 Suppliers.append(i)
         # print("last user",allUsers[-1].data())
+        # print(Suppliers[0],type(Suppliers[0]))
         if not len(Suppliers)>1:
             return redirect(url_for('noservice'))
            
@@ -82,4 +88,12 @@ def data():
         return render_template('data.html',Supp=[Supp,Users])
 
 if __name__ == '__main__':
-    app.run(debug=True)    
+    app.run(debug=True)
+
+
+# 1) order shr 
+# 2) david
+# aakash
+# persistent]
+# RCOEM
+    

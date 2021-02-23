@@ -61,7 +61,7 @@
         }
     </style>
     <h1 align="center" class="pageHeader">
-        Recommended Suppliers for {{ Supp[0] }}
+        Recommended Suppliers for {{ Supp[-1].data()[-1] }}
     </h1>
 </head>
 
@@ -71,16 +71,29 @@
     <table id=movies>
         <col id="column-one">
         <col id="column-two">
+        <col id="column-three">
+        <col id="column-four">
+        <col id="column-five">
+        <col id="column-six">
+        <col id="column-seven">
         <tr>
             <th>Name</th>
+            <th>Last Name</th>
             <th>Email</th>
-            <!-- <th>Address</th> -->
+            <th>Phone Number</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Note</th>
         </tr>
         {% for d in Supp[1:] %}
         <tr>
-            <td>{{ d['name'] }}</td>
+            <td>{{ d['firstName'] }}</td>
+            <td>{{ d['lastName'] }}</td>
             <td>{{ d['email'] }}</td>
-            <!-- <td>{{ d['address'] }}</td> -->
+            <td>{{ d['phoneNumber'] }}</td>
+            <td>{{ d['address'] }}</td>
+            <td>{{ d['city'] }}</td>
+            <td>{{ d['note'] }}</td>
         </tr>
         {% endfor %}
     </table>

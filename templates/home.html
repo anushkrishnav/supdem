@@ -244,7 +244,10 @@
         .dropdown1:hover .dropbtn {
             background-color: #3e8e41;
         }
+     
     </style>
+      <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+      <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,100,400italic,700italic,700'><link rel="stylesheet" href="./style.css">
 </head>
 
 <body >
@@ -254,7 +257,8 @@
     <div class="headingTop"> A platform for managing needs!</div>
     <br>
     <div class="headingTop">If you are in need of a good or service,</div>
-<!--<div class="dropdown1">
+    <!--
+    <div class="dropdown1">
         <button class="dropbtn1">Services Offered</button>
         <div class="dropdown-content1">
             <a href="#">Gardening</a>
@@ -263,16 +267,24 @@
             <a href="#">Coding</a>
             <a href="#">Art</a>
         </div>
-    </div> -->
+    </div> 
+    -->
     <div class="container">
         <form action="{{ url_for('home') }}" method="post" id="contact">
             <!-- <h3>If you need some service</h3> -->
             <!-- <h4>Explain your query details here.</h4> -->
             {{form.hidden_tag()}}
             <fieldset>
-                <label for="name">Name</label>
-                {{ form.name(size=32) }}<br>
-                {% for error in form.name.errors %}
+                <label for="firstName">First Name</label>
+                {{ form.firstName(size=32) }}<br>
+                {% for error in form.firstName.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </fieldset>
+            <fieldset>
+                <label for="lastName">Last Name</label>
+                {{ form.lastName(size=32) }}<br>
+                {% for error in form.lastName.errors %}
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </fieldset>
@@ -283,25 +295,52 @@
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </fieldset>
-      
+            <fieldset>
+                <label for="phoneNumber">Phone Number</label>
+                {{ form.phoneNumber(size=32) }}<br>
+                {% for error in form.phoneNumber.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </fieldset>
+            <fieldset>
+                <label for="Address">Street Address</label>
+                {{ form.address(size=32) }}<br>
+                {% for error in form.address.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </fieldset>
+            <fieldset>
+                <span >City</span>
+                    <select name="city" class="dropDown">
+                      <option value="Nagpur">Nagpur </option>
+                      <option value="Pune">Pune </option>   
+                      <option value="Mumbai">Mumbai </option>
+                      <option value="Aurangabad">Aurangabad </option>
+                      <option value="Nashik">Nashik </option>
+                    </select>
+            </fieldset>
             <fieldset>
                     <span >Services Offered</span>
-                        <select name="comp_select" class="dropDown">
+                        <select name="service" class="dropDown">
                           <option value="Gardening">Gardening </option>
                           <option value="Monetary">Monetary </option>   
                           <option value="Tutoring">Tutoring </option>
                           <option value="Coding">Coding </option>
                           <option value="Art">Art </option>
                         </select>
-             
+            </fieldset>
+            <fieldset>
+                <label for="note">Description</label>
+                {{ form.note(size=32) }}<br>
+                {% for error in form.note.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
             </fieldset>
             <fieldset>
                 <button name="submit" type="submit">Submit</button>
             </fieldset>
-          
         </form>
     </div>
-    
     <div>
         <form id="contact">
             <button name="submit" type="submit">
@@ -311,4 +350,10 @@
     </div>
     </div>
 </body>
+<footer>
+    <span>
+        Made with <i class="fa fa-heart pulse"></i>
+         <!-- in <a href="" target="_blank">Auxburg</a> -->
+    </span>
+</footer>
 </html>
