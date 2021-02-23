@@ -1,1 +1,1 @@
-web: flask db upgrade; flask translate compile; gunicorn app:app
+web: flask db revision --rev-id 837eb2918b36; flask db upgrade; flask translate compile; gunicorn app:app
