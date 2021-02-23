@@ -7,10 +7,11 @@ from config import Config
 app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
-migrate = Migrate(app, db=db)
+migrate = Migrate(app, db=db, render_as_batch=True)
 
-from model import Supplier, User
+
 from forms import UserForm, SupplierForm
+from model import Supplier, User
 @app.route("/home", methods=['GET', 'POST'])
 @app.route("/", methods=['GET', 'POST'])    # User Form
 def home():
