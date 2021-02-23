@@ -21,6 +21,7 @@ class Supplier(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     firstName = db.Column(db.String(60))
+    name = db.Column(db.String(60))
     lastName = db.Column(db.String(60))
     address = db.Column(db.String(500))
     phoneNumber = db.Column(db.String(13))
