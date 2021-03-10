@@ -9,6 +9,6 @@ jobs:
     steps:
       - uses: Naturalclar/issue-action@v2.0.2
         with:
-          title-or-body: "both"
+          title-or-body: "title"
           parameters: '[ {"keywords": ["bug", "error"], "labels": ["BUG"], "assignees": ["username"]}, {"keywords": ["help", "guidance"], "labels": ["help-wanted"], "assignees": ["username"]}]'
           github-token: "${{ secrets.GITHUB_TOKEN }}"
