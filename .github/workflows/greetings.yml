@@ -8,7 +8,7 @@ jobs:
   GreetCommitter:    
     runs-on: ubuntu-latest
     steps:
-    - uses: anushkrishnav/first-interaction
+    - uses: anushkrishnav/first-interaction@v1
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         issue-message: "You can assign the Issue for yourself by using the '/assign' command. Make sure The algorithm/ data structure you are trying to add doesn't already exist. read the [Doc](https://docs.google.com/document/d/1WYYc2ymImxS6-TKB6pRX77A9zpXb_ujGjdpfMaTDXwc/edit?usp=sharing) before you proceed."
