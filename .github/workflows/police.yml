@@ -1,4 +1,4 @@
-name: Issue-Police
+name: check
  
 on:
   issues:
@@ -9,9 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: anushkrishnav/Issue-spam-blocker@master
+        uses: anushkrishnav/Issue-Police@main
       - name: Run Action
         uses: ./
         with:
           token: ${{ secrets.GITHUB_TOKEN }} # default token in GitHub Workflow
           author: anushkrishnav
+          repo: anushkrishnav/supdem
